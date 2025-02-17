@@ -1,0 +1,73 @@
+//* Tipagem define o tipo de dado que uma variável pode armazenar, melhorando segurança e legibilidade do código.
+
+//? Tipos Básicos
+
+const firstName: string = 'Gustavo' //* Define uma constante do tipo string (texto).
+let age: number = 20 //* Define uma variável do tipo number (números inteiros ou decimais).
+const isAlive: boolean = true //* Define uma constante do tipo boolean (verdadeiro ou falso).
+let infosAdd: any //* Define uma variável do tipo any, que pode receber qualquer tipo de valor.
+
+const keyWords: string[] = ['Coffee', 'Programming', 'Music'] //* É possivel definir tipo em listas.
+
+//? Tuplas
+
+let person: [string, number] = ["Gustavo", 20] //* Tupla
+
+let people: [string, number][] = [ //* Lista de tuplas
+    ["Gustavo", 20],
+    ["Pedro", 22]
+]
+
+//* Tuplas são arrays com tipos específicos e tamanho fixo, onde cada posição tem um tipo definido.
+
+//? Union (|)
+
+let id: string | number
+id = 1
+id = '1'
+
+//* Permite que uma variável seja de um tipo OU outro, oferecendo flexibilidade.
+
+//? Intersection (&)
+
+type User = { name: string }
+type Admin = { permissions: string[] }
+
+type AdminUser = User & Admin //* Combina User e Admin em um único tipo.
+
+const adminUser: AdminUser = {
+    name: "Gustavo",
+    permissions: ["create", "delete"]
+}
+
+//* Combina múltiplos tipos em um, criando um tipo que possui todas as propriedades dos tipos originais.
+
+//? Enum
+
+enum Color {
+    red = '#E62200',
+    blue = '#004DE0',
+    green = '#9EE600'
+}
+
+const carColor = Color.red //* Atribui a cor à variável carColor.
+
+//* Define um conjunto de constantes nomeadas, facilitando a organização de valores relacionados.
+
+//? Type Assertions (as)
+
+let someValue: any = "your car is beautiful"
+
+let strLength: number = (someValue as string).length //* Afirma que someValue é do tipo string.
+
+//* Permite afirmar ao compilador o tipo de uma variável, útil quando você sabe mais sobre o tipo do que o TypeScript.
+
+//? Functions
+
+function sum(a: number, b: number): string {
+    return (a + b).toString()
+}
+
+const value = sum(1 ,2) // ==> '3'
+
+//* Define o tipo do valores a serem recebidos (number) e dos valores a serem devolvidos (String).
