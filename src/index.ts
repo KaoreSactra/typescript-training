@@ -28,20 +28,6 @@ id = '1'
 
 //* Permite que uma variável seja de um tipo OU outro, oferecendo flexibilidade.
 
-//? Intersection (&)
-
-type User = { name: string }
-type Admin = { permissions: string[] }
-
-type AdminUser = User & Admin //* Combina User e Admin em um único tipo.
-
-const adminUser: AdminUser = {
-    name: "Gustavo",
-    permissions: ["create", "delete"]
-}
-
-//* Combina múltiplos tipos em um, criando um tipo que possui todas as propriedades dos tipos originais.
-
 //? Enum
 
 enum Color {
@@ -71,3 +57,77 @@ function sum(a: number, b: number): string {
 const value = sum(1 ,2) // ==> '3'
 
 //* Define o tipo do valores a serem recebidos (number) e dos valores a serem devolvidos (String).
+
+//? Type
+
+type Infos = {
+    name: string,
+    age: number,
+    isAlive?: boolean //* o ? torna o campo opcional
+}
+
+const user1: Infos = {
+    name: 'Gustavo',
+    age: 20
+}
+
+//* Cria um alias (apelido) para um tipo, facilitando a reutilização e organização de tipos complexos.
+
+const log = (msg?: boolean) => {} //* o ? torna a existencia opcional
+
+log(user1.isAlive!) //* o ! faz o campo tratar como existente
+
+//? Intersection (&)
+
+type User = { name: string }
+type Admin = { permissions: string[] }
+
+type AdminUser = User & Admin //* Combina User e Admin em um único tipo.
+
+const adminUser: AdminUser = {
+    name: "Gustavo",
+    permissions: ["create", "delete"]
+}
+
+//* Combina múltiplos tipos em um, criando um tipo que possui todas as propriedades dos tipos originais.
+
+//? Interfaces
+
+interface UserFromSite {
+    readonly name: string //* readonly => propriedade que impede a variável ser reescrita
+    readonly age: number
+}
+
+const user: UserFromSite = {
+    name: "Gustavo",
+    age: 20
+}
+
+//* Define a estrutura de um objeto, especificando as propriedades e seus tipos, muito parecido com Type.
+
+//? Classes
+
+interface IPerson { //* Especifica a estrutura de uma Person.
+    readonly id: number
+
+    sayName(): string
+}
+
+class Person implements IPerson { //* Implementa a interface IPerson na classe Person
+    
+    readonly id: number //* Só pode ser atribuído uma vez e não pode ser modificado depois.
+    protected name: string //* Pode ser acessado dentro da classe e por subclasses.
+    private age: number //* Só pode ser acessado dentro da própria classe.
+
+    constructor(id: number, name: string, age: number) { //* Construtor para inicializar as propriedades da classe.
+        this.id = id
+        this.name = name
+        this.age = age
+    }
+
+    sayName(): string { //* Método que retorna o nome da pessoa.
+        return this.name
+    }
+}
+
+const user2 = new Person(2, 'Pedro', 20)
