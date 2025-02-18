@@ -1,4 +1,4 @@
-//* Tipagem define o tipo de dado que uma variável pode armazenar, melhorando segurança e legibilidade do código.
+//! Tipagem define o tipo de dado que uma variável pode armazenar, melhorando segurança e legibilidade do código.
 
 //? Tipos Básicos
 
