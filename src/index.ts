@@ -131,3 +131,19 @@ class Person implements IPerson { //* Implementa a interface IPerson na classe P
 }
 
 const user2 = new Person(2, 'Pedro', 20)
+
+//? Generics
+
+const returnValue = <T>(value: T) => value //* <T> é o padrão da comunidade.
+
+const text = returnValue<string>('Its a string.') //* Tipo definido como String
+const number = returnValue<number>(10) //* Tipo definido como Number
+const boolean = returnValue<boolean>(true) //* Tipo definido como Boolean
+
+const returnValueArray = <T, X>(array: T[], value: X) => { //* É possivel fazer com array e colocar mais de um tipo
+    return [array[0], value]
+}
+
+const arrayText = returnValueArray<string, number>(['Its a string.', 'Its a string 2.'], 10)
+
+//* Permite criar funções, classes ou interfaces que funcionam com tipo mutável, mantendo a segurança de tipagem.
